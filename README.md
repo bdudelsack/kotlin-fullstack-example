@@ -82,7 +82,7 @@ e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/c
 
 the solution is to instuct Kotlin/JS compiler to use CommonJS output.
 
-**frontend/gradle.build.kts
+**frontend/gradle.build.kts**
 ```kotlin
 kotlin {
     target {
