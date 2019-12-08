@@ -18,11 +18,8 @@ repositories {
 
 kotlin {
     target {
-        browser {
-            webpackTask {
-
-            }
-        }
+        useCommonJs()
+        browser()
     }
 
     sourceSets {

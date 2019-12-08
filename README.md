@@ -70,3 +70,26 @@ tasks.register<JavaExec>("run") {
     args = listOf()
 }
 ```
+
+## Using of React.createContext()
+
+I had to found out that `React.createContext` do fail with an error:
+
+```
+> Task :frontend:compileKotlinJs FAILED
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (10, 11): When accessing module declarations from UMD, they must be marked by both @JsModule and @JsNonModule
+```
+
+the solution is to instuct Kotlin/JS compiler to use CommonJS output.
+
+**frontend/gradle.build.kts
+```kotlin
+kotlin {
+    target {
+        useCommonJs()
+        browser()
+    }
+
+    /* ... */
+}
+```
