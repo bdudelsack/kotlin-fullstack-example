@@ -46,7 +46,7 @@ fun main() {
                         }
 
                         script {
-                            src = "/static/backend.js"
+                            src = "/static/frontend.js"
                         }
                     }
                 }
@@ -57,7 +57,7 @@ fun main() {
             }
 
             static("/static") {
-                resource("backend.js")
+                resource("frontend.js")
             }
         }
     }.start(wait = true)

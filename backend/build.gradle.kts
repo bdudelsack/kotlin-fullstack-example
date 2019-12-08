@@ -1,3 +1,5 @@
+import org.jetbrains.kotlin.gradle.targets.js.webpack.KotlinWebpack
+
 var ktorVersion = "1.2.6"
 var logbackVersion = "1.2.3"
 
@@ -18,6 +20,7 @@ dependencies {
     implementation(kotlin("stdlib-jdk8"))
 
     implementation(project(":shared"))
+    implementation(files(":frontend"))
 
     implementation("io.ktor:ktor-server-netty:$ktorVersion")
     implementation("io.ktor:ktor-html-builder:$ktorVersion")
@@ -38,10 +41,23 @@ tasks {
 
 val jar = tasks.findByName("jar") as Jar
 
-tasks.register<JavaExec>("run") {
-    dependsOn("build")
+jar.apply {
+    dependsOn(":frontend:browserWebpack")
 
-    group = "com.bdudelsack"
+    outputs.upToDateWhen { false }
+
+    doFirst {
+        val frontend = project(":frontend")
+        val browserWebpack = frontend.tasks.named<KotlinWebpack>("browserWebpack")
+
+        val file = File(browserWebpack.get().destinationDirectory, "frontend.js")
+        from(file)
+    }
+}
+
+tasks.register<JavaExec>("run") {
+    dependsOn("jar")
+
     main = "com.bdudelsack.fullstack.ApplicationKt"
 
     classpath(configurations["runtimeClasspath"].resolvedConfiguration.files, jar.archiveFile.get().toString())
