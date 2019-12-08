@@ -20,6 +20,7 @@ Targets to achieve on this project
 - [x] Simple backend with Ktor
 - [x] Simple frontend with React in Kotlin/JS
 - [x] Use the backend to serve the frontend scripts
+- [x] Global store
 - [ ] Auto reload
 - [ ] Redux or something else for the global state
 - [ ] Fetch some data from the backend

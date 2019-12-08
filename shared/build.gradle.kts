@@ -1,8 +1,8 @@
 val serialization_version = "0.14.0"
 
 plugins {
-    kotlin("multiplatform") version "1.3.61"
-    id("kotlinx-serialization") version "1.3.61"
+    kotlin("multiplatform")
+    id("kotlinx-serialization")
 }
 
 repositories {
@@ -11,9 +11,9 @@ repositories {
 
 kotlin {
     jvm()
-//    js {
-//        browser()
-//    }
+    js {
+        nodejs()
+    }
 
     /* Targets configuration omitted.
     *  To find out how to configure the targets, please follow the link:

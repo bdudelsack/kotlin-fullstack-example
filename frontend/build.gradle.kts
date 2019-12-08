@@ -1,5 +1,5 @@
 plugins {
-    kotlin("js") version "1.3.61"
+    kotlin("js")
 }
 
 repositories {
@@ -48,6 +48,8 @@ kotlin {
                 implementation("org.jetbrains:kotlin-css:1.0.0-${kotlinWrappersVersion}")
                 implementation("org.jetbrains:kotlin-css-js:1.0.0-${kotlinWrappersVersion}")
                 implementation("org.jetbrains:kotlin-styled:1.0.0-${kotlinWrappersVersion}")
+
+                implementation(project(":shared"))
             }
         }
 
