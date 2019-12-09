@@ -19,7 +19,7 @@ fun main() {
     render(document.getElementById("container")) {
         storeProvider(store) {
             h1 {
-                +"Kotlin fullstack example"
+                +"Kotlin fullstack example !!!"
             }
 
             todoList()

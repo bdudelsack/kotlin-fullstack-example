@@ -122,3 +122,55 @@ config.resolve.alias = {
     'kotlinx-html-js': 'kotlinx-html',
 };
 ```
+
+## TODO: Auto reload
+
+The frontend module can be started in auto reload mode with the following command.
+
+```bash
+./gradlew :frontend:run -t
+```
+
+It seems not to work yet and fails with following error.
+
+```log
+✖ ｢wdm｣: Hash: 6513f41ecb91190706be
+Version: webpack 4.41.2
+Time: 24ms
+Built at: 2019-12-09 13:42:11
+      Asset     Size  Chunks             Chunk Names
+frontend.js  892 KiB    main  [emitted]  main
+Entrypoint main = frontend.js
+[./kotlin/kotlin-fullstack-example-frontend.js] 382 bytes {main} [built] [failed] [1 error]
+    + 33 hidden modules
+
+ERROR in ./kotlin/kotlin-fullstack-example-frontend.js
+Module build failed (from /home/bdudelsack/Projects/kotlin-fullstack-example/build/js/packages_imported/kotlin-source-map-loader/1.3.61/kotlin-source-map-loader.js):
+Error: ENOENT: no such file or directory, open '/home/bdudelsack/Projects/kotlin-fullstack-example/build/js/packages/kotlin-fullstack-example-frontend/kotlin/kotlin-fullstack-example-frontend.js'
+ @ multi ./kotlin/kotlin-fullstack-example-frontend.js main[0]
+
+> Task :frontend:compileKotlinJs FAILED
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (6, 8): Unresolved reference: react
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (7, 8): Unresolved reference: react
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (19, 5): Unresolved reference: render
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (20, 9): Unresolved reference: storeProvider
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (21, 13): Unresolved reference: h1
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (22, 17): Unresolved reference: +
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (25, 13): Cannot access class 'react.RProps'. Check your module classpath for missing or conflicting dependencies
+e: /home/bdudelsack/Projects/kotlin-fullstack-example/frontend/src/main/kotlin/com.bdudelsack.fullstack/Application.kt: (25, 22): No value passed for parameter 'props'
+
+FAILURE: Build failed with an exception.
+
+* What went wrong:
+Execution failed for task ':frontend:compileKotlinJs'.
+> Compilation error. See log for more details
+
+* Try:
+Run with --stacktrace option to get the stack trace. Run with --info or --debug option to get more log output. Run with --scan to get full insights.
+
+* Get more help at https://help.gradle.org
+
+BUILD FAILED in 516ms
+6 actionable tasks: 1 executed, 5 up-to-date
+
+```
