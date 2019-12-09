@@ -98,12 +98,15 @@ kotlin {
 ## Problem with webpack resolving @jetbrains packages
 
 ```log
-ERROR in /home/bdudelsack/Projects/kotlin-fullstack-example/build/js/node_modules/@jetbrains/kotlin-react/build/classes/main/kotlin-react.js
-Module not found: Error: Can't resolve 'kotlinx-coroutines-core' in '/home/bdudelsack/Projects/kotlin-fullstack-example/build/js/node_modules/@jetbrains/kotlin-react/build/classes/main'
- @ /home/bdudelsack/Projects/kotlin-fullstack-example/build/js/node_modules/@jetbrains/kotlin-react/build/classes/main/kotlin-react.js 718:85-119
- @ ./kotlin/kotlin-fullstack-example-frontend.js
+ERROR in ./kotlin/kotlin-fullstack-example-frontend.js
+Module not found: Error: Can't resolve 'kotlin-react' in '/home/bdudelsack/Projects/kotlin-fullstack-example/build/js/packages/kotlin-fullstack-example-frontend/kotlin'
+ @ ./kotlin/kotlin-fullstack-example-frontend.js 173:128-151
  @ multi ./kotlin/kotlin-fullstack-example-frontend.js
 
+ERROR in ./kotlin/kotlin-fullstack-example-frontend.js
+Module not found: Error: Can't resolve 'kotlin-react-dom' in '/home/bdudelsack/Projects/kotlin-fullstack-example/build/js/packages/kotlin-fullstack-example-frontend/kotlin'
+ @ ./kotlin/kotlin-fullstack-example-frontend.js 173:81-108
+ @ multi ./kotlin/kotlin-fullstack-example-frontend.js
 ```
 
 In order for webpack to pick the @jetbrains-scoped packages correctly, following configuration need to be applied.
