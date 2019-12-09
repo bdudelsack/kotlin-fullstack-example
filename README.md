@@ -94,3 +94,28 @@ kotlin {
     /* ... */
 }
 ```
+
+## Problem with webpack resolving @jetbrains packages
+
+```log
+ERROR in /home/bdudelsack/Projects/kotlin-fullstack-example/build/js/node_modules/@jetbrains/kotlin-react/build/classes/main/kotlin-react.js
+Module not found: Error: Can't resolve 'kotlinx-coroutines-core' in '/home/bdudelsack/Projects/kotlin-fullstack-example/build/js/node_modules/@jetbrains/kotlin-react/build/classes/main'
+ @ /home/bdudelsack/Projects/kotlin-fullstack-example/build/js/node_modules/@jetbrains/kotlin-react/build/classes/main/kotlin-react.js 718:85-119
+ @ ./kotlin/kotlin-fullstack-example-frontend.js
+ @ multi ./kotlin/kotlin-fullstack-example-frontend.js
+
+```
+
+In order for webpack to pick the @jetbrains-scoped packages correctly, following configuration need to be applied.
+
+**frontend/webpack.config.d/01.resolve.js**
+```js
+config.resolve.alias = {
+    'kotlin-css-js': '@jetbrains/kotlin-css-js',
+    'kotlin-extensions': '@jetbrains/kotlin-extensions',
+    'kotlin-react': '@jetbrains/kotlin-react',
+    'kotlin-react-dom': '@jetbrains/kotlin-react-dom',
+    'kotlin-styled': '@jetbrains/kotlin-styled',
+    'kotlinx-html-js': 'kotlinx-html',
+};
+```
